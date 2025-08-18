@@ -24,7 +24,7 @@ python dfa_minimizer.py
  - 3. The file input.txt is the program’s input. I have already included a test case that will work when you run it.
 However, if you want to test the program with another example, follow these instructions to provide a new input:
 
-# DFA Specification
+### DFA Specification
 
 ## Alphabet Symbols
 c n alphabet_symbols
@@ -41,11 +41,10 @@ transition_row_1
 ## Transition Row 2
 transition_row_2
 
-...
-
 ## Transition Row n-1
 transition_row_n-1
 
+where: 
 - `c`: number of test cases (DFAs).  
 - `n`: number of states in the DFA.  
 - `alphabet_symbols`: alphabet symbols separated by spaces.  
