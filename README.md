@@ -26,22 +26,22 @@ However, if you want to test the program with another example, follow these inst
 
 ### DFA Specification
 
-## Alphabet Symbols
+#### Alphabet Symbols
 c n alphabet_symbols
 
-## Final States
+#### Final States
 final_states
 
-## Transition Row 0
+#### Transition Row 0
 transition_row_0
 
-## Transition Row 1
+#### Transition Row 1
 transition_row_1
 
-## Transition Row 2
+#### Transition Row 2
 transition_row_2
 
-## Transition Row n-1
+#### Transition Row n-1
 transition_row_n-1
 
 where: 
