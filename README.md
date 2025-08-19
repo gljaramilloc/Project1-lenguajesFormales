@@ -51,7 +51,7 @@ where:
 - `final_states`: final states separated by spaces.  
 - Each transition row corresponds to one state and contains the destination states in the same order as the alphabet symbols.
 
-# DFA Minimization
+# DFA Minimization explanation
 
 This project implements a **DFA (Deterministic Finite Automaton) minimization** algorithm in Python.  
 The main function is `minimize_dfa`, which finds **equivalent states** using the **table-filling method**.
