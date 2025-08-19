@@ -70,7 +70,7 @@ The main function is `minimize_dfa`, which finds **equivalent states** using the
 
 ---
 
-### 🔎 Step by Step Explanation
+### 🔎 Step by Step 
 
 #### Step 1: Initialize the table of pairs
 ```python
