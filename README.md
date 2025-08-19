@@ -81,18 +81,22 @@ Each entry (p, q) indicates whether states p and q are distinguishable.
 
 Initially, all pairs are set to False (not marked as different).
 
-#### **Step 2:  Mark pairs where one state is final and the other is not**
+Step 2: Mark pairs where one state is final and the other is not
+
 for p in range(n):
     for q in range(p + 1, n):
         if (p in finals) != (q in finals):
             marked[p][q] = True
 
 
+
 If one state is accepting and the other is not, they cannot be equivalent.
 
 Such pairs (p, q) are marked as distinguishable immediately.
 
-#### ** Step 3: Iteratively mark distinguishable pairs **
+
+Step 3: Iteratively mark distinguishable pairs**
+
 changed = True
 while changed:
     changed = False
