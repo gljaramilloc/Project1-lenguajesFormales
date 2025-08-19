@@ -51,10 +51,10 @@ where:
 - `final_states`: final states separated by spaces.  
 - Each transition row corresponds to one state and contains the destination states in the same order as the alphabet symbols.
 
-# DFA Minimization - Code Explanation
+# DFA Minimization
 
-This project implements a DFA (Deterministic Finite Automaton) minimization algorithm in Python.  
-The core function is `minimize_dfa`, which finds **equivalent states** using the **table-filling method**.
+This project implements a **DFA (Deterministic Finite Automaton) minimization** algorithm in Python.  
+The main function is `minimize_dfa`, which finds **equivalent states** using the **table-filling method**.
 
 ---
 
@@ -64,7 +64,7 @@ The core function is `minimize_dfa`, which finds **equivalent states** using the
 - **n** → Number of states in the DFA.  
 - **alphabet** → List of alphabet symbols.  
 - **finals** → Set of final (accepting) states.  
-- **delta** → Transition table, represented as a 2D list where:
+- **delta** → Transition table as a 2D list:
   - Each row corresponds to a state.  
   - Each column corresponds to the destination state under a given input symbol.
 
@@ -72,30 +72,23 @@ The core function is `minimize_dfa`, which finds **equivalent states** using the
 
 ### 🔎 Step by Step Explanation
 
-#### **Step 1: Initialize the table of pairs**
+#### Step 1: Initialize the table of pairs
 ```python
 marked = [[False] * n for _ in range(n)]
+A 2D table marked is created.
 
--A 2D table marked is created.
 Each entry (p, q) indicates whether states p and q are distinguishable.
 
 Initially, all pairs are set to False (not marked as different).
 
 Step 2: Mark pairs where one state is final and the other is not
-
 for p in range(n):
     for q in range(p + 1, n):
         if (p in finals) != (q in finals):
             marked[p][q] = True
+Pairs with one accepting and one non-accepting state are immediately marked as distinguishable.
 
-
-
-If one state is accepting and the other is not, they cannot be equivalent.
-
-Such pairs (p, q) are marked as distinguishable immediately.
-
-
-Step 3: Iteratively mark distinguishable pairs**
+Step 3: Iteratively mark distinguishable pairs
 
 changed = True
 while changed:
@@ -112,39 +105,48 @@ while changed:
                         changed = True
                         break
 
+For each unmarked pair (p, q), check transitions under each symbol.
 
-This is the core of the table-filling algorithm.
+If their next states (p_next, q_next) are already distinguishable, (p, q) is marked as distinguishable.
 
-For each pair (p, q) not yet marked:
-
-Look at their transitions for each input symbol.
-
-If their next states (p_next, q_next) are already distinguishable, then (p, q) must also be distinguishable.
-
-This process repeats until no new pairs are marked.
+Repeat until no new pairs are marked.
 
 Step 4: Collect equivalent pairs
+
 result = []
 for p in range(n):
     for q in range(p + 1, n):
         if not marked[p][q]:
-            result.append(f"({p},{q})")
+            result.append((p, q))
+Pairs not marked as distinguishable are equivalent states.
 
-
-After the iterations, any pair (p, q) not marked as distinguishable is equivalent.
-
-These pairs are returned in a list.
+They are returned as a sorted list of tuples.
 
 📌 Function: main()
+Reads input from input.txt and executes DFA minimization.
 
-The main function handles reading the input and executing the minimization.
-
-Read input from input.txt.
+Input format:
 
 First line → number of test cases.
 
-Next → states, alphabet, final states, and transition table.
+For each case:
 
-Call minimize_dfa for each case.
+Number of states
 
-Print equivalent pairs separated by spaces.
+Alphabet symbols
+
+Final states
+
+Transition table
+
+Calls minimize_dfa for each test case.
+
+Prints equivalent pairs separated by spaces.
+
+✅ Usage
+Prepare input.txt with the correct format.
+
+Run the program:
+
+
+
